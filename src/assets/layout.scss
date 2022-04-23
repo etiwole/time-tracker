@@ -1,0 +1,31 @@
+#app {
+  display: grid;
+  grid-template-areas: "nav header" "nav main";
+  grid-template-columns: 5em 10fr;
+  grid-template-rows: 5em 10fr;
+  //gap: 1em;
+
+  //& > * {
+  //  background: aquamarine;
+  //}
+
+  header {
+    grid-area: header;
+    display: flex;
+    align-items: center;
+  }
+
+  aside {
+    grid-area: nav;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  main {
+    grid-area: main;
+    padding: 1rem;
+    background: #F3F5F9;
+  }
+}

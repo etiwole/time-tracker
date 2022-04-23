@@ -1,26 +1,37 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <header>header</header>
+    <aside>
+        <Nav></Nav>
+    </aside>
+    <main>
+        <router-view></router-view>
+    </main>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import { ref } from 'vue';
+import axios from 'axios';
+import Nav from "@/components/Nav";
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+    name: 'App',
+    components: {
+        Nav,
+    },
+    setup() {
+        const data = ref();
+
+        axios.get('http://localhost:3001/tasks').then((res) => {
+            data.value = res.data
+
+            console.log(data.value)
+        })
+
+        return { data }
+    }
 }
 </script>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
